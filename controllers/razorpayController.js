@@ -14,7 +14,8 @@ if (!admin.apps.length) {
     console.warn("Firebase not initialized: set GOOGLE_APPLICATION_CREDENTIALS or FIREBASE_SERVICE_ACCOUNT_JSON");
   }
 }
-const db = admin.firestore ? admin.firestore() : null;f
+const db = admin && typeof admin.firestore === "function" ? admin.firestore() : null;
+
 
 // Razorpay client
 const razorpay = new Razorpay({
