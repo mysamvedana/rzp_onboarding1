@@ -14,7 +14,7 @@ if (!admin.apps.length) {
     console.warn("Firebase not initialized: set GOOGLE_APPLICATION_CREDENTIALS or FIREBASE_SERVICE_ACCOUNT_JSON");
   }
 }
-const db = admin.firestore ? admin.firestore() : null;
+const db = admin.firestore ? admin.firestore() : null;f
 
 // Razorpay client
 const razorpay = new Razorpay({
@@ -38,7 +38,7 @@ async function createOrder(req, res) {
       amount: amountInPaise,
       currency: "INR",
       receipt,
-      payment_capture: parseInt(process.env.DEFAULT_PAYMENT_CAPTURE || "0", 10),
+      payment_capture: parseInt(process.env.DEFAULT_PAYMENT_CAPTURE || "1", 10),
       notes,
     };
 
@@ -83,7 +83,7 @@ async function verifyPayment(req, res) {
     }
 
     // capture if manual
-    const defaultCapture = parseInt(process.env.DEFAULT_PAYMENT_CAPTURE || "0", 10);
+    const defaultCapture = parseInt(process.env.DEFAULT_PAYMENT_CAPTURE || "1", 10);
     if (amountInPaise && defaultCapture === 0) {
       try {
         await razorpay.payments.capture(razorpay_payment_id, amountInPaise, "INR");
