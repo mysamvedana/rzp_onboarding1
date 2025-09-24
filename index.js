@@ -17,7 +17,7 @@ if (
 ) {
   try {
     const tmpDir = os.tmpdir(); // cross-platform temp directory
-    const tmpPath = path.join(tmpDir, "/tmp/serviceAccountKey.json");
+    const tmpPath = path.join(tmpDir, "serviceAccountKey.json");
     fs.writeFileSync(tmpPath, process.env.FIREBASE_SERVICE_ACCOUNT_JSON, {
       mode: 0o600,
     });
